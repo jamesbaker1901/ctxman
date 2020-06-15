@@ -22,12 +22,14 @@ Ensure `ctxman` is in your `$PATH` with `which ctxman`. If not, you may need to 
 If you intend to use `ctxman` to handle environment variables, you will also need to add the following to your `~/.bashrc` or `~/.zshrc`:
 
 #### Bash
+`~/.bashrc` or `~/bash_profile` for OSX
 ```
 alias cc="ctxman && source ~/.config/ctxman/env"
 source ~/.config/ctxman/env
 PROMPT_COMMAND='source ~/.config/ctxman/env'
 ```
 #### zsh
+`~/.zshrc`
 ```
 alias cc="ctxman && source ~/.config/ctxman/env"
 source ~/.config/ctxman/env
