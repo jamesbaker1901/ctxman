@@ -1,5 +1,7 @@
 # Context Manager
 
+NOTE: `ctxman` is under active development! Some features are merely placeholder code and others are largely untested. Proceed atyour own risk!
+
 `ctxman` makes managing your many environments and contexts a breeze. In the modern DevOps world, developers and operators often have to change contexts or environments many times a day, switching from prod to dev to test or internal tools environments. Each of the changes may involve: changing environment variables, swapping config files, setting a new `kubectl` cluster and namespace, a new vpn connection, etc.
 
 Rather than write a bash script or handle each of these changes manually, simply define your environments in a `ctxman` config file and let it handle the tedium for you!
