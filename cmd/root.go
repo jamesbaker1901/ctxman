@@ -41,15 +41,17 @@ var rootCmd = &cobra.Command{
 			fmt.Println("please specify an environment and optionally a namespace")
 			os.Exit(1)
 		case 1:
-			fmt.Println("switching to env: ", args[0])
 			err := Swap(args[0], "")
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
 		case 2:
-			fmt.Println("switching to env: ", args[0])
-			fmt.Println("and namespace: ", args[1])
+			err := Swap(args[0], args[1])
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
 		case 3:
 			fmt.Println("too many arguments!")
 			os.Exit(1)
@@ -74,10 +76,7 @@ func init() {
 func initConfig() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("./")
-	viper.AddConfigPath("$HOME/")
 	viper.AddConfigPath("$HOME/.config/ctxman/")
-	viper.AddConfigPath("/etc/ctxman/")
 
 	err := viper.ReadInConfig()
 	if err != nil {

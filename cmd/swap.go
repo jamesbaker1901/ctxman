@@ -11,7 +11,12 @@ type Environment struct {
 		Cluster   string `yaml:"cluster"`
 		Namespace string `yaml:"namespace"`
 	} `yaml:"kubernetes"`
-	Env     []string `yaml:"env"`
+	Env []struct {
+		Variable struct {
+			Key   string `yaml:"key"`
+			Value string `yaml:"value"`
+		} `yaml:"variable"`
+	} `yaml:"env"`
 	Openvpn struct {
 		ConfigFile string `yaml:"configFile"`
 	} `yaml:"openvpn"`
@@ -45,7 +50,7 @@ func Swap(env string, namespace string) error {
 	}
 
 	if e.Kubernetes.Cluster != "" {
-		err = e.SetKubernetes()
+		err = e.SetKubernetes(namespace)
 		if err != nil {
 			return err
 		}
@@ -82,11 +87,6 @@ func Swap(env string, namespace string) error {
 	return nil
 }
 
-func (e *Environment) ExceShell() error {
-	fmt.Println("executing shell command:", e.Shell.Command)
-	return nil
-}
-
 func (e *Environment) SetPath() error {
 	if e.Path.Include != "" {
 		fmt.Println("adding to $PATH:", e.Path.Include)
@@ -108,19 +108,5 @@ func (e *Environment) SetOpenvpn() error {
 func (e *Environment) SetSymlink() error {
 	fmt.Println("setting symlink:")
 	fmt.Println(" > ln -s", e.Symlink.Source, e.Symlink.Dest)
-	return nil
-}
-
-func (e *Environment) SetKubernetes() error {
-	fmt.Println("Changing to Kubernetes cluster: " + e.Kubernetes.Cluster)
-	return nil
-}
-
-func (e *Environment) SetEnv() error {
-	fmt.Println("setting environment variables:")
-	for _, v := range e.Env {
-		fmt.Println(v)
-	}
-
 	return nil
 }
