@@ -117,7 +117,7 @@ The `kubernetes` block allows you to define a preferred cluster and optionally a
 The `env` block should be a list of environment variables and their values. 
 
 #### openvpn
-The `openvpn` block will establish a vpn connection (requires openvpn be intstalled and accessible via the user's `$PATH`) using the specified pvpn profile. If an openvpn connection already exists, `ctxman` will terminate it first.
+The `openvpn` block will establish a vpn connection (requires openvpn be intstalled and accessible via the user's `$PATH`) using the specified ovpn profile. If an openvpn connection already exists, `ctxman` will terminate it first.
 
 #### shell
 The `shell` block will execute the command provided. If multiple commands are needed, simply place them in a script and call the script in this block.

@@ -55,9 +55,7 @@ var rootCmd = &cobra.Command{
 		case 3:
 			fmt.Println("too many arguments!")
 			os.Exit(1)
-
 		}
-
 	},
 }
 
@@ -70,7 +68,7 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 func initConfig() {
